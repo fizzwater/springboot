@@ -1,0 +1,63 @@
+mysql:  
+    datasource:  
+        readSize: 2  #读库个数  
+        type: com.alibaba.druid.pool.DruidDataSource  
+        mapperLocations: classpath:mybatis/mapper/*.xml
+        configLocation: classpath:mybatis/mybatis-config.xml
+        write:  
+           url: jdbc:mysql://localhost/yh_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           username: root  
+           password: 123456
+           driver-class-name: com.mysql.jdbc.Driver  
+           minIdle: 5  
+           maxActive: 100  
+           initialSize: 10  
+           maxWait: 60000  
+           timeBetweenEvictionRunsMillis: 60000  
+           minEvictableIdleTimeMillis: 300000  
+           validationQuery: select 'x'  
+           testWhileIdle: true  
+           testOnBorrow: false  
+           testOnReturn: false  
+           poolPreparedStatements: true  
+           maxPoolPreparedStatementPerConnectionSize: 50  
+           removeAbandoned: true  
+           filters: stat  
+        read01:  
+           url: jdbc:mysql://localhost/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           username: root  
+           password: 123456
+           driver-class-name: com.mysql.jdbc.Driver  
+           minIdle: 5  
+           maxActive: 100  
+           initialSize: 10  
+           maxWait: 60000  
+           timeBetweenEvictionRunsMillis: 60000  
+           minEvictableIdleTimeMillis: 300000  
+           validationQuery: select 'x'  
+           testWhileIdle: true  
+           testOnBorrow: false  
+           testOnReturn: false  
+           poolPreparedStatements: true  
+           maxPoolPreparedStatementPerConnectionSize: 50  
+           removeAbandoned: true  
+           filters: stat  
+        read02:  
+           url: jdbc:mysql://192.168.102.219/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           username: yh_test
+           password: yh_test
+           driver-class-name: com.mysql.jdbc.Driver  
+           minIdle: 5  
+           maxActive: 100  
+           initialSize: 10  
+           maxWait: 60000  
+           timeBetweenEvictionRunsMillis: 60000  
+           minEvictableIdleTimeMillis: 300000  
+           validationQuery: select 'x'  
+           testWhileIdle: true  
+           testOnBorrow: false  
+           testOnReturn: false  
+           poolPreparedStatements: true  
+           maxPoolPreparedStatementPerConnectionSize: 50  
+           removeAbandoned: true  
+           filters: stat    

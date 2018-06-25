@@ -1,0 +1,129 @@
+#server:
+      #context-path: /demo
+ #     port: 8080
+ #     tomcat.uri-encoding: utf-8
+
+
+#应用监控begin jmx
+#监控访问是否开启权限
+management:
+     context-path: /management
+     port: 8088
+     security:
+         enabled: false
+endpoints:
+     status:
+         id: mystatus
+         age: 18
+sb:
+     status:
+         hostname: goo
+
+#endpoints.shutdown.enabled=true
+#应用监控end jmx
+info:
+    build:
+        artifact: @project.artifactId@
+        name: @project.name@
+        description: @project.description@
+        version: @project.version@
+
+
+#mybatis.type-aliases-package=com.qin.springboot.model
+#配置.xml文件路径
+mybatis:
+    mapper-locations: classpath:mybatis/mapper/*.xml
+    config-locations: classpath:mybatis/mybatis-config.xml
+    type-aliases-package: com.qin.springboot.model
+
+mysql:
+    datasource:
+        readSize: 2  #读库个数
+        type: com.alibaba.druid.pool.DruidDataSource
+        mapperLocations: classpath:mybatis/mapper/*.xml
+        configLocation: classpath:mybatis/mybatis-config.xml
+        write:
+           url: jdbc:mysql://localhost/yh_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           username: root
+           password: 123456
+           driver-class-name: com.mysql.jdbc.Driver
+           minIdle: 5
+           maxActive: 100
+           initialSize: 10
+           maxWait: 60000
+           timeBetweenEvictionRunsMillis: 60000
+           minEvictableIdleTimeMillis: 300000
+           validationQuery: select 'x'
+           testWhileIdle: true
+           testOnBorrow: false
+           testOnReturn: false
+           poolPreparedStatements: true
+           maxPoolPreparedStatementPerConnectionSize: 50
+           removeAbandoned: true
+           filters: stat
+        read01:
+           url: jdbc:mysql://localhost/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           username: root
+           password: 123456
+           driver-class-name: com.mysql.jdbc.Driver
+           minIdle: 5
+           maxActive: 100
+           initialSize: 10
+           maxWait: 60000
+           timeBetweenEvictionRunsMillis: 60000
+           minEvictableIdleTimeMillis: 300000
+           validationQuery: select 'x'
+           testWhileIdle: true
+           testOnBorrow: false
+           testOnReturn: false
+           poolPreparedStatements: true
+           maxPoolPreparedStatementPerConnectionSize: 50
+           removeAbandoned: true
+           filters: stat
+        read02:
+           url: jdbc:mysql://192.168.102.219/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           username: yh_test
+           password: yh_test
+           driver-class-name: com.mysql.jdbc.Driver
+           minIdle: 5
+           maxActive: 100
+           initialSize: 10
+           maxWait: 60000
+           timeBetweenEvictionRunsMillis: 60000
+           minEvictableIdleTimeMillis: 300000
+           validationQuery: select 'x'
+           testWhileIdle: true
+           testOnBorrow: false
+           testOnReturn: false
+           poolPreparedStatements: true
+           maxPoolPreparedStatementPerConnectionSize: 50
+           removeAbandoned: true
+           filters: stat
+#jdbc
+#spring.datasource.url=jdbc:mysql://localhost/yh_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+#spring.datasource.username=root
+#spring.datasource.password=123456
+#spring.datasource.max-active=10
+#spring.datasource.max-idle=5
+#spring.datasource.min-idle=0
+#非必需
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+#spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+#非必需
+#spring.datasource.type=com.mchange.v2.c3p0.ComboPooledDataSource
+
+
+
+
+
+#Mybatis
+#配置模型路径
+#mybatis.type-aliases-package=com.qin.springboot.model
+#配置.xml文件路径
+#mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+
+#mybatis.config-locations=classpath:mybatis/mybatis-config.xml
+
+spring:
+    profiles:
+        active: @profileActive@
