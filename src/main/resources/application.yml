@@ -43,7 +43,7 @@ mysql:
         mapperLocations: classpath:mybatis/mapper/*.xml
         configLocation: classpath:mybatis/mybatis-config.xml
         write:
-           url: jdbc:mysql://localhost/yh_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           url: jdbc:mysql://192.168.102.219/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
            username: root
            password: 123456
            driver-class-name: com.mysql.jdbc.Driver
@@ -127,3 +127,9 @@ mysql:
 spring:
     profiles:
         active: @profileActive@
+    mvc:
+        view:
+          # 页面默认前缀目录
+          prefix: /WEB-INF/jsp/
+          # 响应页面默认后缀
+          suffix: .jsp

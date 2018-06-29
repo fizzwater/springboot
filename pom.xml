@@ -6,7 +6,7 @@
     <groupId>com.qin</groupId>
     <artifactId>com.qin.springboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
@@ -25,14 +25,24 @@
         <java.version>1.8</java.version>
     </properties>
 
-
-
-
     <dependencies>
         <!-- web项目 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!--  <dependency>
@@ -40,10 +50,23 @@
               <artifactId>spring-jdbc</artifactId>
           </dependency>
       -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <!-- tomcat支持 -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <!-- jstl标签库 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
         </dependency>
 
         <dependency>
@@ -123,6 +146,8 @@
             <version>3.7</version>
         </dependency>
 
+
+
     </dependencies>
 
     <profiles>
@@ -143,7 +168,6 @@
         </profile>
 
     </profiles>
-
 
     <build>
         <resources>
@@ -195,7 +219,6 @@
 
         </plugins>
     </build>
-
 
 
 </project>
