@@ -215,6 +215,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--目前只能使用1.4.2版本，使用其他版本jsp无法显示-->
                 <version>1.4.2.RELEASE</version>
                 <!-- spring-boot:run 中文乱码解决 -->
                 <configuration>
