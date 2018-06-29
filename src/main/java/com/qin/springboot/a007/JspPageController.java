@@ -31,6 +31,7 @@ public class JspPageController {
     public String index(Map<String, Object> model){
         // 直接返回字符串，框架默认会去 spring.view.prefix 目录下的 （index拼接spring.view.suffix）页面
         // 本例为 /WEB-INF/jsp/index.jsp
+        System.out.println("hello world jsp here 1");
         model.put("time", new Date());
         model.put("message", this.hello);
         return "jone";
@@ -41,6 +42,7 @@ public class JspPageController {
      */
     @RequestMapping("/jsp2")
     public ModelAndView page1(){
+        System.out.println("hello world jsp here 2");
         // 页面位置 /WEB-INF/jsp/page/page.jsp
         ModelAndView mav = new ModelAndView("jtwo");
         mav.addObject("content", hello);
@@ -52,6 +54,7 @@ public class JspPageController {
      */
     @RequestMapping("/jsp22")
     public String page2(Model model){
+        System.out.println("hello world jsp here 22");
         // 页面位置 /WEB-INF/jsp/page/page.jsp
         model.addAttribute("content", hello + "（第二种）");
         return "jtwo";
