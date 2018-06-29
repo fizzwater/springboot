@@ -43,7 +43,7 @@ mysql:
         mapperLocations: classpath:mybatis/mapper/*.xml
         configLocation: classpath:mybatis/mybatis-config.xml
         write:
-           url: jdbc:mysql://192.168.102.219/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+           url: jdbc:mysql://localhost/yh_ops?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
            username: root
            password: 123456
            driver-class-name: com.mysql.jdbc.Driver
