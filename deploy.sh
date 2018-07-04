@@ -19,21 +19,21 @@ main(){
 #               source /home/master/.bash_profile
 
                 if [ $PROJECT_NAME = "monitor-service" ]; then
-                        GIT_COMMOND="http://jack.xue:xc890105@git.yoho.cn/ops/monitor-service.git"
+                        GIT_COMMOND="http://fizzwater:pwd@git.yoho.cn/ops/monitor-service.git"
                         MVN_COMMOND="-Plocal"
                         WAR_FILE=$FHOME/monitor-service/monitor-service-web/target
                         WAR_NAME=monitor
                         TOMCAT_NAME=apache-tomcat-7.0.81-server
                         deploy
                 elif [ $PROJECT_NAME = "monitor-ui" ]; then
-                        GIT_COMMOND="http://jack.xue:xc890105@git.yoho.cn/ops/monitor-ui.git"
+                        GIT_COMMOND="http://fizzwater:pwd@git.yoho.cn/ops/monitor-ui.git"
                         MVN_COMMOND="-Plocal"
                         WAR_FILE=$FHOME/monitor-ui/monitor-ui-web/target
                         WAR_NAME=ROOT
                         TOMCAT_NAME=apache-tomcat-7.0.81-ui
                         deploy
                 elif [ $PROJECT_NAME = "opsmanager" ]; then
-                    GIT_COMMOND="http://jack.xue:xc890105@git.yoho.cn/ops/opsmanager.git"
+                    GIT_COMMOND="http://fizzwater:pwd@git.yoho.cn/ops/opsmanager.git"
                         MVN_COMMOND="-Ptest"
                         WAR_FILE=$FHOME/opsmanager/yoho-opsmanager-web/target
                         WAR_NAME=ROOT
