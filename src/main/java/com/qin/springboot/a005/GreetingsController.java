@@ -24,8 +24,8 @@ public class GreetingsController {
     private Environment environment;
 
     @RequestMapping("/greet")
-    public String greet() {
+    public String greet(String name) {
         counterService.increment("myapp.greet.count");
-        return "Hello!  <br/> "+environment.getProperty("good.dd.val")+"<br/> "+environment.getProperty("spring.profiles.active")+"<br/>"+environment.getProperty("qinchao.encoding");
+        return "Hello!   "+name +"<br/>"+environment.getProperty("good.dd.val")+"<br/> "+environment.getProperty("spring.profiles.active")+"<br/>"+environment.getProperty("qinchao.encoding");
     }
 }

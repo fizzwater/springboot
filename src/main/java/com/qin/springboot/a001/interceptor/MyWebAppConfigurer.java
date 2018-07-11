@@ -1,10 +1,21 @@
 package com.qin.springboot.a001.interceptor;
 
+import com.alibaba.fastjson.parser.deserializer.MapDeserializer;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.qin.springboot.a001.interceptor.MyInterceptor1;
 import com.qin.springboot.a001.interceptor.MyInterceptor2;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.*;
+
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
@@ -45,12 +56,36 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
                 .allowedMethods("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH");
     }
 
-//        @Override
-//        public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-//            converters.add(new FastJsonHttpMessageConverter());
-//            converters.add(new ByteArrayHttpMessageConverter());
-//            super.configureMessageConverters(converters);
-//        }
+    @Override
+   public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        StringHttpMessageConverter stringHttpMessageConverter=new StringHttpMessageConverter(Charset.forName("UTF-8"));
+        List<MediaType> stringMediaTypes = new ArrayList<>();
+        stringMediaTypes.add(MediaType.TEXT_PLAIN);
+        stringMediaTypes.add(MediaType.TEXT_HTML);
+        stringMediaTypes.add(MediaType.APPLICATION_OCTET_STREAM);
+        stringHttpMessageConverter.setSupportedMediaTypes(stringMediaTypes);
+        converters.add(stringHttpMessageConverter);
+
+        //1.需要定义一个convert转换消息的对象;
+        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
+        //2.添加fastJson的配置信息，比如：是否要格式化返回的json数据;
+        //FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        //fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+        //3处理中文乱码问题
+        List<MediaType> fastMediaTypes = new ArrayList<>();
+        //fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        fastMediaTypes.add(MediaType.ALL);
+        //4.在convert中添加配置信息.
+        fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
+        //fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
+        //5.将convert添加到converters当中.
+        converters.add(fastJsonHttpMessageConverter);
+
+
+        super.configureMessageConverters(converters);
+
+        System.out.println(converters);
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

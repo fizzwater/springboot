@@ -2,12 +2,7 @@ package com.qin.springboot.a006;
 
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +21,18 @@ public class CorsController {
 
     // 创建线程安全的Map
     static Map<Integer, User> users = Collections.synchronizedMap(new HashMap<Integer, User>());
+
+
+    /*
+    * 测试@RequestBody接收简单类型
+    * 需要引入FastJsonHttpMessageConverter
+     */
+    @RequestMapping("/testRequest")
+    @ResponseBody
+    public String testRequest(@RequestBody String test) {
+        System.out.println(test);
+        return ""+test;
+    }
 
     /**
      * 根据ID查询用户
