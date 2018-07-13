@@ -56,10 +56,15 @@ public class RabbitmqConfig {
         //return DirectExchange.DEFAULT;
     }
 
-   /* @Bean
+    @Bean
     public FanoutExchange defaultFanoutExchange() {
-        return new FanoutExchange(EXCHANGE_FANOUT_NAME);
-    }*/
+        return new FanoutExchange(ConstantMq.FANOUT_EXCHANGE_NAME);
+    }
+
+    @Bean
+    public TopicExchange defaultTopicExchange() {
+        return new TopicExchange(ConstantMq.TOPIC_EXCHANGE_NAME);
+    }
 
     @Bean
     public Queue queue() {
@@ -72,6 +77,16 @@ public class RabbitmqConfig {
     }
 
     @Bean
+    public Queue queueFanout() {
+        return new Queue(ConstantMq.FANOUT_QUEUE_NAME);
+    }
+
+    @Bean
+    public Queue queueTopic() {
+        return new Queue(ConstantMq.TOPIC_QUEUE_NAME);
+    }
+
+    @Bean
     public Binding binding() {
         return BindingBuilder.bind(queue()).to(defaultExchange()).with(ConstantMq.ROUTING_KEY);
     }
@@ -79,6 +94,16 @@ public class RabbitmqConfig {
     @Bean
     public Binding binding2() {
         return BindingBuilder.bind(queue2()).to(defaultExchange()).with(ConstantMq.ROUTING_KEY2);
+    }
+
+    @Bean
+    public Binding bindingFanout() {
+        return BindingBuilder.bind(queueFanout()).to(defaultFanoutExchange());
+    }
+
+    @Bean
+    public Binding bindingTopic() {
+        return BindingBuilder.bind(queueTopic()).to(defaultTopicExchange()).with("sms.#.#");
     }
 
   /*

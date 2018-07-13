@@ -36,5 +36,25 @@ public class RabbitmqProducer  {
         return uuid;
     }
 
+    @RequestMapping("sendFanout")
+    public String sendFanout() {
+        //执行保存
+        String uuid = UUID.randomUUID().toString();
+        for(int i=0;i<5;i++){
+            rabbitTemplate.convertAndSend(ConstantMq.FANOUT_EXCHANGE_NAME,"","msg fanout"+i);
+        }
+        return uuid;
+    }
+
+    @RequestMapping("sendTopic")
+    public String sendTopic() {
+        //执行保存
+        String uuid = UUID.randomUUID().toString();
+        for(int i=0;i<5;i++){
+            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"sms.im","msg topic"+i);
+        }
+        return uuid;
+    }
+
 
 }
