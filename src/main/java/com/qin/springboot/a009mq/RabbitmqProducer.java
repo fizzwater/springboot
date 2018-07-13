@@ -50,8 +50,11 @@ public class RabbitmqProducer  {
     public String sendTopic() {
         //执行保存
         String uuid = UUID.randomUUID().toString();
-        for(int i=0;i<5;i++){
-            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"sms.im","msg topic"+i);
+        for(int i=0;i<3;i++){
+            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"sms.warning","msg sms.warning topic"+i);
+        }
+        for(int i=0;i<2;i++){
+            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"dingding.warning","msg dingding.warning topic"+i);
         }
         return uuid;
     }

@@ -103,7 +103,7 @@ public class RabbitmqConfig {
 
     @Bean
     public Binding bindingTopic() {
-        return BindingBuilder.bind(queueTopic()).to(defaultTopicExchange()).with("sms.#.#");
+        return BindingBuilder.bind(queueTopic()).to(defaultTopicExchange()).with("#.warning");
     }
 
   /*
