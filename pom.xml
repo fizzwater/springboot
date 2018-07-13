@@ -142,10 +142,31 @@
         </dependency>
 
         <!-- 内嵌浏览器 爬虫 -->
+        <!-- https://mvnrepository.com/artifact/com.hynnet/DJNativeSwing -->
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>DJNativeSwing</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>DJNativeSwing-SWT</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+
         <dependency>
             <groupId>com.machinepublishers</groupId>
             <artifactId>jbrowserdriver</artifactId>
             <version>0.17.11</version>
+        </dependency>
+
+
+        <!-- a009 mq rabbitmq -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
     </dependencies>
