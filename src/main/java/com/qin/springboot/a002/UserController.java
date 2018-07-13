@@ -1,17 +1,20 @@
 package com.qin.springboot.a002;
 
-import com.qin.springboot.model.User;
 import com.qin.springboot.dao.UserDao;
+import com.qin.springboot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.beans.Transient;
-
+/**
+ * //@EnableAutoConfiguration 加上后可以不让userDao，提示错误
+ * 但是违背了本意
+ * 可在File -- Settings -- Inspections。在Spring Core -- Autowring for Bean Class 中，
+ * 将Severity的级别由之前的error改成warning。
+ */
 @RestController
-@EnableAutoConfiguration
 @RequestMapping("/test002")
 public class UserController {
 
