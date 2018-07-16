@@ -1,6 +1,7 @@
 package com.qin.springboot.a009mq;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class RabbitmqProducer  {
         String uuid = UUID.randomUUID().toString();
 
         rabbitTemplate.convertAndSend(ConstantMq.EXCHANGE_NAME,ConstantMq.ROUTING_KEY,"msg test 2:"+uuid);
-        rabbitTemplate.convertAndSend(ConstantMq.EXCHANGE_NAME,ConstantMq.ROUTING_KEY2,"msg test 2:"+uuid);
+        //rabbitTemplate.convertAndSend(ConstantMq.EXCHANGE_NAME,ConstantMq.ROUTING_KEY2,"msg test 2:"+uuid);
         //rabbitTemplate.convertAndSend(ConstantMq.QUEUE_NAME,ConstantMq.ROUTING_KEY2, "key2:"+uuid);
         return uuid;
     }
@@ -50,11 +51,14 @@ public class RabbitmqProducer  {
     public String sendTopic() {
         //执行保存
         String uuid = UUID.randomUUID().toString();
-        for(int i=0;i<3;i++){
-            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"sms.warning","msg sms.warning topic"+i);
+        int count =0;
+        for(count=0;count<3;count++){
+            CorrelationData correlationData=new CorrelationData(""+count);
+            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"sms.warning","msg sms.warning topic"+count,correlationData);
         }
-        for(int i=0;i<2;i++){
-            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"dingding.warning","msg dingding.warning topic"+i);
+        for(;count<5;count++){
+            CorrelationData correlationData=new CorrelationData(""+count);
+            rabbitTemplate.convertAndSend(ConstantMq.TOPIC_EXCHANGE_NAME,"dingding.warning","msg dingding.warning topic"+count,correlationData);
         }
         return uuid;
     }

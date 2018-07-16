@@ -5,7 +5,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = ConstantMq.QUEUE_NAME)
+@RabbitListener(queues = ConstantMq.QUEUE_NAME2)
 public class RabbitmqProducerConsumer {
 
 
