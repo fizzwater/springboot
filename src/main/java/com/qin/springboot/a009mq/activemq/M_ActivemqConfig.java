@@ -6,6 +6,7 @@ import org.apache.activemq.spring.ActiveMQConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
@@ -18,11 +19,19 @@ public class M_ActivemqConfig {
 
     @Bean(name="activeMQConnectionFactory")
     public ConnectionFactory connectionFactory() {
+
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
         connectionFactory.setBrokerURL(ConstantActiveMq.BROKERURL);
         connectionFactory.setUserName(ConstantActiveMq.USERNAME);
         connectionFactory.setPassword(ConstantActiveMq.PASSWORD);
-        return connectionFactory;
+
+        //提高效率，优化性能Spring提供了两个javax.jms.ConnectionFactory的实现：SingleConnectionFactory和CachingConnectionFactory。
+        // 它们实际上是一种Wrapper，用来缓存如：Connection、Session、MessageProducer、MessageConsumer。
+        //SingleConnectionFactory顾名思义，无论调用多少次createConnection(..)都返回同一个Connection实例。
+        // 但是它并不缓存Session，也就是说调用一次createSession(...)就会创建一个新的实例。推荐使用SingleConnectionFactory。
+        //SingleConnectionFactory singleCf = new SingleConnectionFactory(connectionFactory);
+        CachingConnectionFactory cachingCf = new CachingConnectionFactory(connectionFactory);
+        return cachingCf;
 
     }
 
