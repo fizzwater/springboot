@@ -28,11 +28,11 @@ info:
         description: @project.description@
         version: @project.version@
 
-
 #mybatis.type-aliases-package=com.qin.springboot.model
 #配置.xml文件路径
 mybatis:
-    mapper-locations: classpath:mybatis/mapper/*.xml
+    #mapper-locations: classpath:mybatis/mapper/*.xml
+    mapper-locations: classpath:com/qin/springboot/dao/*.xml
     config-locations: classpath:mybatis/mybatis-config.xml
     type-aliases-package: com.qin.springboot.model
 

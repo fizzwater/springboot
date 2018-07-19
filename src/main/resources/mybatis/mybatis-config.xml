@@ -5,7 +5,7 @@
 <configuration>
     <settings>
         <setting name="defaultStatementTimeout" value="2"/> <!-- seconds -->
-        <setting name="logImpl" value="STDOUT_LOGGING" /> <!-- 在控制台显示sql语句配置文件 -->
+        <setting name="logImpl" value="SLF4J" /> <!-- 在控制台显示sql语句配置文件 -->
     </settings>
     <typeAliases>
         <typeAlias alias="Integer" type="java.lang.Integer" />

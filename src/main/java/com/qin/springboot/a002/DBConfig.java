@@ -14,6 +14,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -103,7 +106,16 @@ public class DBConfig {
        // factoryBean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
         // 读取配置
         factoryBean.setTypeAliasesPackage(typeAliasesPackage);
-        factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mybatis/mapper/*.xml"));
+
+        //mapper文件目录
+        Resource[] resources = new PathMatchingResourcePatternResolver()
+                .getResources(mapperLocations);
+        factoryBean.setMapperLocations(resources);
+
+        //读取mybatis配置文件，插件配置
+        factoryBean.setConfigLocation(
+                new DefaultResourceLoader().getResource(configLocation));
+
         //factoryBean.afterPropertiesSet();
         return factoryBean.getObject();
     }
