@@ -89,7 +89,9 @@
         <appender-ref ref="WARN"/>
     </root>
 
-    <logger name="com.qin.springboot.dao" level="DEBUG">
+    <!-- false：表示只用当前logger的appender-ref。
+     true：表示当前logger的appender-ref和rootLogger的appender-ref都有效。-->
+    <logger name="com.qin.springboot.dao" level="DEBUG" additivity="false">
        <!-- <appender-ref ref="STDOUT" />-->
         <!-- 文件输出 -->
         <appender-ref ref="DAO"/>
