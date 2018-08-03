@@ -12,12 +12,12 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
         select
         <include refid="Base_Column_List" />
-        from user
+        from USER
         where id = #{id,jdbcType=INTEGER}
     </select>
 
     <insert id="insert" parameterType="com.qin.springboot.model.User" >
-        insert into user
+        insert into USER
         (name,pwd)
         values
         (#{name,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR})

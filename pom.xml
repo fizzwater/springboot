@@ -120,13 +120,19 @@
             <version>1.3.1</version>
         </dependency>
 
-        <!-- mysql 驱动-->
+        <!-- mysql 驱动   5.1.38版本太高，连接cobar有问题-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.38</version>
+            <version>5.1.24</version>
         </dependency>
 
+        <!--  cobar-client 和 cobar-server是两种配置cobar的方式
+        <dependency>
+            <groupId>com.alibaba.cobar</groupId>
+            <artifactId>cobar-client</artifactId>
+            <version>1.0.5</version>
+        </dependency>-->
 
         <dependency>
             <groupId>commons-net</groupId>

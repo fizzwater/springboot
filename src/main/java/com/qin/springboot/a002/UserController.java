@@ -27,7 +27,7 @@ public class UserController {
     public User getUser() {
         //RoutingDataSource.setThreadLocalDataSourceKey(DataSourceType.readDataSource02.name());
         log.info("begin getUser ");
-        User user = userDao.selectByPrimaryKey(17);
+        User user = userDao.selectByPrimaryKey(524);
         return user;
     }
 
