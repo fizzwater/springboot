@@ -1,0 +1,17 @@
+1.github
+https://github.com/wstrange/GoogleAuth
+2.pom ,引入
+<dependency>
+  <groupId>com.warrenstrange</groupId>
+  <artifactId>googleauth</artifactId>
+  <version>1.1.2</version>
+</dependency>
+
+3.m1()
+
+4.m2()方法
+需要配置ServiceLoader
+resource 下面 建文件夹META-INF ，
+              META-INF下建下一级文件夹services
+              services下建文件 ，以接口 com.warrenstrange.googleauth.ICredentialRepository命名 ，
+                                   内容是该接口的实现类：com.qin.springboot.a010googleauth.MyCredentialRepository
