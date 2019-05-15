@@ -17,6 +17,8 @@ public class GeneMain {
 
         //二维码 ,参考m1()
 
+        //客户端微信小程序 ： https://github.com/LCTT/WeApp-Password
+
     }
 
     /**
@@ -90,7 +92,7 @@ public class GeneMain {
      */
     public static void m1(){
         GoogleAuthenticatorConfig config = new GoogleAuthenticatorConfig.GoogleAuthenticatorConfigBuilder().setCodeDigits(6).setTimeStepSizeInMillis(TimeUnit.SECONDS.toMillis(300L)).build();
-        GoogleAuthenticator gAuth = new GoogleAuthenticator(config);
+        GoogleAuthenticator gAuth = new GoogleAuthenticator();
         final GoogleAuthenticatorKey key = gAuth.createCredentials();
 
         String secretKey = key.getKey();
@@ -110,9 +112,9 @@ public class GeneMain {
 
             //根据secretKey获取code
             int code = gAuth.getTotpPassword(secretKey);
-            password = String.valueOf(code);
+            String password2 = String.valueOf(code);
             System.out.println("here is pwd:"+password);
-
+            System.out.println("here is pwd test :"+password2);
           /*  try {
                       Thread.sleep(60*1000);
             } catch (Exception e) {
