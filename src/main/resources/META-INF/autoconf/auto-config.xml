@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <group>
+        <property name="server.port.qcc" defaultValue="9990" description="web项目端口号"/>
+    </group>
+    <script>
+        <generate template="applicationtest.properties.vm" destfile="/WEB-INF/classes/applicationqc.properties" charset="utf-8"/>
+    </script>
+</config>

@@ -1,0 +1,3 @@
+#端口号
+server.port.qcc=${server_port_qcc}
+qinchao.encoding.test=${qinchao_encoding_test}

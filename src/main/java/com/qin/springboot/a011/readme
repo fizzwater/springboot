@@ -1,2 +1,8 @@
 spring-jms-examples
 https://github.com/bsnyder/spring-jms-examples
+
+
+auto-config
+https://my.oschina.net/klausprince/blog/1545574
+原理：autoconfig配置好模板
+      根据外部配置文件antx.properties替换
