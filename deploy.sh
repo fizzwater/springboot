@@ -5,6 +5,7 @@
 #./deploy.sh monitor-ui
 ################### Input parameter for user ###################################
 
+
 PROJECT_NAME=$1
 GIT_COMMOND=
 MVN_COMMOND=
